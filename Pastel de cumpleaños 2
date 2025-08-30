@@ -1,0 +1,27 @@
+function createCandle(x, y) {
+  const candle = document.createElement("div");
+  candle.className = "candle";
+  candle.style.left = x + "px";
+  candle.style.top = y + "px";
+
+  const flame = document.createElement("div");
+  flame.className = "flame";
+  candle.appendChild(flame);
+
+  document.getElementById("cake").appendChild(candle);
+}
+
+function drawCandles() {
+  const cake = document.getElementById("cake");
+  cake.innerHTML = ""; // limpiar velas anterior si las hubiera
+
+  // Distribuir las velas en la parte de arriba del pastel
+  const cakeWidth = cake.offsetWidth;
+  const spacing = cakeWidth / (numCandles + 1);
+
+  for (let i = 0; i < numCandles; i++) {
+    let x = spacing * (i + 1);
+    let y = 10; // altura fija de las velas sobre el pastel
+    createCandle(x, y);
+  }
+}
